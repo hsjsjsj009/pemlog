@@ -31,3 +31,8 @@ scalarMult(X,[Head|Tail],[NewHead|Y]) :- scalarMult(X,Tail,Y), NewHead is Head*X
 
 dot([],[],0).
 dot([Head|Tail],[Head1|Tail1],Res) :- dot(Tail,Tail1,X), Res is Head*Head1+X. 
+
+antara(X,Y,X) :- X =< Y.
+antara(X,Y,Res) :- X1 is X+1, X < Y, antara(X1,Y,Res).
+
+kuadratUnik(A) :- antara(32,99,A), Y is A**2, Puluhan is Y mod 100, Ribuan is Y//100, A is Puluhan + Ribuan.

@@ -29,3 +29,7 @@ non_member(X,[Head|Tail]) :- non_member(X, Tail), X \= Head .
 hapus(_,[],[]).
 hapus(List,[Head|Tail],R) :- member(Head,List), hapus(List,Tail,R).
 hapus(List,[Head|Tail],R) :- non_member(Head,List), append([Head],X,R), hapus(List,Tail,X).
+
+
+konversi(X,[X|_],[Head1|_],Head1).
+konversi(X,[Y|T],[_|T1],Res) :- konversi(X,T,T1,Res).
