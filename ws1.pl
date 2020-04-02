@@ -16,12 +16,10 @@ palindrom(X) :- kebalikan(X,X).
 
 lshift([Head|Tail],Y) :- append(Tail,[Head],Y).  
 
-rshift(List,Y) :- kebalikan(List,[Head|Tail]),kebalikan(Tail,Tail_Rev),append([Head],Tail_Rev,Y).
+rshift(List,[Head|Tail_Rev]) :- kebalikan(List,[Head|Tail]),kebalikan(Tail,Tail_Rev).
 
 duplikat([Head],[Head,Head]).
 duplikat([Head|Tail],Y) :- duplikat(Tail,T1),append([Head,Head],T1,Y).
-
-mem(a).
 
 non_member(_,[]).
 non_member(X,[Head|Tail]) :- non_member(X, Tail), X \= Head .
@@ -32,4 +30,8 @@ hapus(List,[Head|Tail],R) :- non_member(Head,List), append([Head],X,R), hapus(Li
 
 
 konversi(X,[X|_],[Head1|_],Head1).
-konversi(X,[Y|T],[_|T1],Res) :- konversi(X,T,T1,Res).
+konversi(X,[_|T],[_|T1],Res) :- konversi(X,T,T1,Res).
+
+p(a).
+p(X) :- X \= a.
+y(X) :- p(X). 
